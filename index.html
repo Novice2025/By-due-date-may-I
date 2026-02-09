@@ -115,77 +115,94 @@
             color: var(--text-muted);
             max-width: 700px;
             margin: 0 auto 30px;
+            line-height: 1.8;
         }
 
         /* Diagram Container */
         .diagram-container {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 20px;
             margin-bottom: 30px;
             position: relative;
             overflow: hidden;
         }
+
         .diagram-label {
             position: absolute;
             top: 10px;
             left: 10px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
+            font-size: 0.8rem;
             color: var(--text-muted);
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Real Life Box (New) */
+        /* Real Life Box */
         .real-life-box {
-            background: linear-gradient(135deg, #2d333b 0%, #181b21 100%);
-            border-left: 4px solid var(--power-color);
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent);
             padding: 20px;
-            border-radius: 8px;
             margin-bottom: 30px;
             text-align: left;
+            border-radius: 0 8px 8px 0;
         }
-        .rl-title { color: var(--power-color); font-weight: bold; margin-bottom: 10px; font-size: 1.1rem; text-transform: uppercase; }
-        .rl-text { margin-bottom: 15px; color: #ddd; }
-        .rl-examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-        .rl-card { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 5px; }
-        .rl-ctx { font-size: 0.8rem; color: #888; margin-bottom: 5px; }
-        .rl-ph { font-size: 1.1rem; color: #fff; font-weight: bold; }
-        .rl-pt { font-size: 0.9rem; color: var(--accent); font-style: italic; }
+
+        .rl-title {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .rl-text { margin-bottom: 15px; font-style: italic; color: #ddd; }
+
+        .rl-examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .rl-ex-item {
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .rl-label { display: block; font-size: 0.8rem; margin-bottom: 5px; opacity: 0.7; }
+        .rl-val { font-weight: bold; }
+        .rl-bad { color: var(--error); text-decoration: line-through; }
+        .rl-good { color: var(--accent); }
 
         /* Comparison Table */
+        .comparison-table-container {
+            overflow-x: auto;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 0.95rem;
-            background: var(--bg-card);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .comparison-table th {
             text-align: left;
-            padding: 15px;
-            background: rgba(0, 255, 157, 0.05);
-            border-bottom: 2px solid var(--accent);
-            color: var(--accent);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-        .comparison-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-muted);
-            vertical-align: top;
-        }
-        .comparison-table tr:last-child td { border-bottom: none; }
-        .comparison-table tr:hover td {
-            background: rgba(255,255,255,0.02);
-            color: var(--text-main);
         }
 
-        /* Scenarios */
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            background: rgba(255,255,255,0.05);
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Scenarios Grid */
         .scenarios-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -196,34 +213,39 @@
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 20px;
-            transition: transform 0.2s;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
 
         .card-header {
             display: flex;
             justify-content: space-between;
             margin-bottom: 15px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
         }
 
         .scenario-text {
             font-size: 1.1rem;
             margin-bottom: 15px;
             color: #fff;
-            border-left: 3px solid var(--accent);
-            padding-left: 15px;
+            font-weight: 500;
         }
 
         .context-text {
             font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 15px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
             font-style: italic;
         }
 
@@ -231,68 +253,140 @@
         .brazil-box {
             background: rgba(255, 204, 0, 0.05);
             border: 1px solid rgba(255, 204, 0, 0.2);
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 12px;
-            margin-top: auto;
         }
+
         .brazil-header {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
+
         .flag-icon { font-size: 1.2rem; }
+
         .brazil-equiv-label {
             display: block;
             font-size: 0.7rem;
             color: var(--brazil-yellow);
             text-transform: uppercase;
+            font-weight: bold;
         }
+
         .brazil-equiv-text {
             color: #fff;
             font-weight: bold;
         }
+
         .brazil-explanation {
             font-size: 0.85rem;
             color: #ccc;
-            margin-top: 5px;
+            line-height: 1.4;
         }
 
         /* Exercise Section */
         .exercise-section {
-            background: var(--bg-card);
+            background: linear-gradient(145deg, #1a1a1a, #222);
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 16px;
             text-align: center;
             border: 1px solid var(--border);
+            margin-top: 40px;
         }
-        .prompt { font-size: 1.2rem; margin-bottom: 20px; }
+
+        .prompt {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
         .input-area {
             width: 100%;
-            max-width: 500px;
-            padding: 15px;
-            background: #000;
+            max-width: 400px;
+            padding: 12px;
+            border-radius: 6px;
             border: 1px solid var(--border);
+            background: #000;
             color: #fff;
-            border-radius: 5px;
-            margin-bottom: 15px;
             font-size: 1rem;
+            margin-bottom: 15px;
         }
-        .input-area:focus { outline: none; border-color: var(--accent); }
+
         .check-btn {
             background: var(--accent);
             color: #000;
             border: none;
             padding: 12px 30px;
-            border-radius: 5px;
+            border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
+            transition: transform 0.1s;
         }
-        .check-btn:hover { background: #00cc7d; }
-        .feedback { margin-top: 15px; font-weight: bold; min-height: 24px; }
+
+        .check-btn:active { transform: scale(0.98); }
+
+        .feedback {
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 24px;
+        }
         .feedback.success { color: var(--accent); }
         .feedback.error { color: var(--error); }
+
+        /* Revision Section */
+        .revision-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .revision-title {
+            text-align: center;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .revision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .revision-card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .rev-term {
+            display: block;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .rev-desc {
+            display: block;
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .rev-task {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 5px;
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -304,184 +398,163 @@
 
     <header>
         <h1>Lego Disruptive Block Chain</h1>
-        <div class="subtitle">Advanced Business English for Brazilian Executives</div>
+        <div class="subtitle">by Daby</div>
     </header>
 
     <div class="nav-container">
-        <button class="nav-btn active" onclick="switchTab('may-i')">May I (Master Key)</button>
+        <button class="nav-btn active" onclick="switchTab('may-i')">May I</button>
         <button class="nav-btn" onclick="switchTab('time-terms')">Time Terminology</button>
-        <button class="nav-btn" onclick="switchTab('by-deadline')">By (The Limit)</button>
+        <button class="nav-btn" onclick="switchTab('by-deadline')">By (Deadline)</button>
     </div>
 
     <div class="container" id="content-area">
-        <!-- Content injected via JS -->
+        <!-- Content injected by JS -->
     </div>
 
     <script>
-        // CRITICAL: Initialize Mermaid to not auto-run, preventing syntax errors
-        mermaid.initialize({ startOnLoad: false });
-
         const lessonData = {
             'may-i': {
-                title: "May I: The Master Key",
-                why: "In Portuguese, we use 'Posso' for everything. In English, 'Can I' is for ability/informal, but <span class='h-cyan'>'May I'</span> is the strategic tool for permission, interruption, and polite offers.",
+                title: "May I vs. Can I",
+                why: "Stop asking if you <span class='h-pink'>can</span> (ability) open the window. Of course you have hands! Ask if you <span class='h-cyan'>may</span> (permission). It's the difference between a brute and a diplomat.",
                 diagramCode: `
                 graph TD
-                  A((MAY I)) --> B[Permission]
-                  A --> C[Interruption]
-                  A --> D[Offer]
-                  A --> E[Suggestion]
-                  style A fill:#00ff9d,color:#000
-                  style B fill:#181b21,stroke:#00ff9d,color:#fff
-                  style C fill:#181b21,stroke:#00ff9d,color:#fff
-                  style D fill:#181b21,stroke:#00ff9d,color:#fff
-                  style E fill:#181b21,stroke:#00ff9d,color:#fff
+                  A[Request] --> B{Type?}
+                  B -->|Physical Ability| C[CAN I?]
+                  B -->|Permission/Polite| D[MAY I?]
+                  C --> E[Do I have legs/hands?]
+                  D --> F[Do I have your blessing?]
+                  style C fill:#ff00aa,color:#fff
+                  style D fill:#00f2ff,color:#000
                 `,
-                realLifeBox: {
-                    title: "Real Life Shortcut: Just 'May I?'",
-                    text: "In social situations, you don't need a full sentence. If the context is clear (gesturing), just say 'May I?'. It is the ultimate polite shortcut.",
-                    examples: [
-                        { context: "Pointing to an empty chair", phrase: "May I?", pt: "Posso pegar?" },
-                        { context: "Reaching for a sample", phrase: "May I?", pt: "Posso provar?" },
-                        { context: "Entering a room", phrase: "May I?", pt: "Com licença?" }
-                    ]
+                realLife: {
+                    title: "The Bathroom Trap",
+                    text: "Student: 'Teacher, can I go to the bathroom?'<br>Teacher: 'I don't know, can you? Do you have legs?'<br><br><b>Why this happens:</b> In Portuguese, 'Poder' does it all. In English, we split it. <b>CAN</b> checks if your legs work (Ability). <b>MAY</b> checks if the teacher agrees (Permission). When you ask 'Can I?', you are asking a stupid question: 'Am I physically capable of walking?' Of course you are! That's why the teacher mocks you. Ask for <i>permission</i> (May), not <i>ability</i> (Can).",
+                    bad: "Can I come in?",
+                    good: "May I come in?"
                 },
+                brazilEquiv: "Poder (Permissão) vs. Conseguir (Habilidade)",
+                brazilTip: "In PT, 'Posso entrar?' covers both. In English, 'Can' implies physical ability. 'May' implies polite permission.",
                 scenarios: [
                     {
-                        company: "Internal",
-                        role: "Subordinate",
-                        name: "Leaving Early",
-                        text: "<span class='h-cyan'>May I</span> leave 10 minutes early today?",
-                        context: "Asking for permission formally.",
-                        brazilEquiv: "Posso sair...?",
-                        brazilTip: "Don't say 'Can I' to your boss for permission. 'May I' shows respect for authority."
+                        company: "Boardroom",
+                        role: "Manager",
+                        name: "Sarah",
+                        text: "May I interrupt for a second?",
+                        context: "Polite interruption. 'Can I' sounds like 'Am I physically able to speak?'"
                     },
                     {
-                        company: "Meeting",
-                        role: "Peer",
-                        name: "Interruption",
-                        text: "<span class='h-cyan'>May I</span> just add a quick point here?",
-                        context: "Polite interruption in a flow.",
-                        brazilEquiv: "Posso só adicionar...?",
-                        brazilTip: "Use this to interrupt without being rude. It asks for the floor."
-                    },
-                    {
-                        company: "Client",
-                        role: "Service",
-                        name: "Offer",
-                        text: "<span class='h-cyan'>May I</span> help you with your coat?",
-                        context: "Offering assistance politely.",
-                        brazilEquiv: "Posso ajudar...?",
-                        brazilTip: "Standard hospitality phrase. 'Can I help' is okay, 'May I' is classy."
-                    },
-                    {
-                        company: "Strategy",
-                        role: "Consultant",
-                        name: "Suggestion",
-                        text: "<span class='h-cyan'>May I</span> suggest we move the deadline?",
-                        context: "Softening a hard suggestion.",
-                        brazilEquiv: "Posso sugerir...?",
-                        brazilTip: "Makes a command sound like a question. Very diplomatic."
+                        company: "Client Call",
+                        role: "Sales",
+                        name: "Mike",
+                        text: "May I ask a question about the budget?",
+                        context: "Respectful. Shows you value their authority."
                     }
                 ],
                 exercise: {
-                    prompt: "Translate: 'Posso fazer uma sugestão?' (Formal)",
-                    keywords: ["may i", "suggest", "suggestion"],
-                    successMsg: "Perfect! 'May I suggest' is the diplomatic standard.",
-                    failMsg: "Try starting with 'May I suggest...'"
+                    prompt: "You want to leave the meeting early. You ask: '___ I leave early?'",
+                    keywords: ["may"],
+                    successMsg: "Correct! You are asking for permission, not if your legs work.",
+                    failMsg: "Use 'May'. If you say 'Can', you are asking if the door is unlocked."
                 }
             },
             'time-terms': {
-                title: "Time Terminology",
-                why: "Brazilians often mix up Deadline, Due Date, and Expiry. They are not synonyms. One is a target, one is a wall, and one is death.",
+                title: "In Time vs. On Time",
+                why: "Think of a movie. If you arrive <span class='h-cyan'>ON time</span>, the movie starts right then. If you arrive <span class='h-pink'>IN time</span>, you still have 5 minutes to buy popcorn. <span class='h-pink'>In</span> = Inside the safety zone. <span class='h-cyan'>On</span> = On the dot.",
                 diagramCode: `
-                graph TD
-                  A[Time Concepts] --> B(Due Date)
-                  A --> C(Deadline)
-                  A --> D(Expiry Date)
-                  B --> B1["Target (Expected)"]
-                  C --> C1["Cut-off (Must Do)"]
-                  D --> D1["End of Life (Invalid)"]
-                  style B fill:#2d333b,stroke:#ffcc00,color:#fff
-                  style C fill:#2d333b,stroke:#ff4d4d,color:#fff
-                  style D fill:#2d333b,stroke:#a0a0a0,color:#fff
+                graph LR
+                  A[Event Start] --> B((ON TIME))
+                  C[Before Event] --> D((IN TIME))
+                  D -->|Safety Margin| A
+                  B -->|Punctual| A
+                  style B fill:#00f2ff,color:#000
+                  style D fill:#ff00aa,color:#fff
                 `,
                 table: [
-                    { col1: "DUE DATE", col2: "The expected date. Soft(er).", col3: "Consequence: Disappointment / Late Fee" },
-                    { col1: "DEADLINE", col2: "The cut-off date. Hard.", col3: "Consequence: Rejection / Failure" },
-                    { col1: "EXPIRY DATE", col2: "The end of validity.", col3: "Consequence: Void / Useless" }
+                    { col1: "ON Time", col2: "Punctual (Scheduled)", col3: "Professionalism" },
+                    { col1: "IN Time", col2: "Before the deadline", col3: "Safety / Relief" }
                 ],
+                realLife: {
+                    title: "The Wedding Rule",
+                    text: "The bride walks in <b>ON time</b> (4:00 PM sharp).<br>The groom arrived <b>IN time</b> (3:50 PM, thank god).",
+                    bad: "I arrived in time for the 9 AM meeting. (Sounds like you almost missed it)",
+                    good: "I arrived on time for the 9 AM meeting. (Professional)"
+                },
+                brazilEquiv: "A tempo (In) vs. Na hora (On)",
+                brazilTip: "Na hora certa = On time. A tempo (de evitar algo) = In time.",
                 scenarios: [
                     {
-                        company: "Project",
-                        role: "Manager",
-                        name: "The Target",
-                        text: "The <span class='h-yellow'>due date</span> for the draft is Friday.",
-                        context: "It should be done by then.",
-                        brazilEquiv: "Data de vencimento / Prazo ideal",
-                        brazilTip: "Think of bills. They have a 'Due Date'."
-                    },
-                    {
-                        company: "Legal",
-                        role: "Director",
-                        name: "The Wall",
-                        text: "The <span class='h-pink'>deadline</span> for the merger is 5 PM.",
-                        context: "If we miss this, the deal is off.",
-                        brazilEquiv: "Prazo final / Fatal",
-                        brazilTip: "Deadline comes from 'Dead Line' (prison perimeter). Do not cross it."
-                    },
-                    {
-                        company: "Contract",
-                        role: "Sales",
-                        name: "The End",
-                        text: "This offer has an <span class='h-cyan'>expiry date</span> of July 1st.",
-                        context: "After this, the paper is worthless.",
-                        brazilEquiv: "Data de validade",
-                        brazilTip: "Used for food, contracts, and options."
-                    }
-                ],
-                exercise: {
-                    prompt: "Translate: 'Qual é o prazo final?' (The hard limit)",
-                    keywords: ["deadline", "what is"],
-                    successMsg: "Correct! Deadline is the hard limit.",
-                    failMsg: "Use 'Deadline' for the hard limit."
-                }
-            },
-            'by-deadline': {
-                title: "By (The Limit)",
-                why: "The most common mistake: 'I need this UNTIL Friday'. No! 'Until' means duration (duração). For deadlines (limite), use <span class='h-pink'>BY</span>.",
-                diagramCode: `
-                timeline
-                    title BY vs UNTIL
-                    NOW : Working... : Working...
-                    FRIDAY : STOP (BY) : (Deadline)
-                `,
-                scenarios: [
-                    {
-                        company: "Email",
-                        role: "Boss",
-                        name: "The Demand",
-                        text: "I need this report <span class='h-pink'>by</span> 5 PM.",
-                        context: "Not 'until' 5 PM.",
-                        brazilEquiv: "Até as 17h (Limite)",
-                        brazilTip: "By = Before or at that specific moment. It marks the finish line."
+                        company: "Logistics",
+                        role: "Driver",
+                        name: "Tom",
+                        text: "The package arrived in time for Christmas.",
+                        context: "Before the deadline (Christmas day)."
                     },
                     {
                         company: "HR",
-                        role: "Recruiter",
-                        name: "Application",
-                        text: "Please submit your CV <span class='h-pink'>by</span> Monday.",
-                        context: "Any time before Monday is fine.",
-                        brazilEquiv: "Até segunda",
-                        brazilTip: "If you say 'Until Monday', it sounds like you will keep submitting CVs continuously until Monday."
+                        role: "Interviewer",
+                        name: "Lisa",
+                        text: "Please be on time for the interview.",
+                        context: "Punctuality. 9:00 AM sharp."
                     }
                 ],
                 exercise: {
-                    prompt: "Translate: 'Eu preciso disso até amanhã.'",
-                    keywords: ["by tomorrow", "need this"],
-                    successMsg: "Yes! 'By tomorrow' is the correct limit.",
-                    failMsg: "Remember: Limit = By. Duration = Until."
+                    prompt: "The ambulance arrived ___ to save the patient.",
+                    keywords: ["in", "in time"],
+                    successMsg: "Correct! 'In time' implies a safety margin before a bad outcome.",
+                    failMsg: "Think: Did it arrive at a scheduled hour (On) or before it was too late (In)?"
                 }
+            },
+            'by-deadline': {
+                title: "By vs. Until",
+                why: "The 'Guillotine' Rule. <span class='h-pink'>By</span> 5 PM means at 5:01 PM, it's too late. The head is chopped off. <span class='h-cyan'>Until</span> 5 PM means you are working *continuously* up to that moment.",
+                diagramCode: `
+                graph TD
+                  A[Timeline] --> B{Action Type}
+                  B -->|Deadline/Cutoff| C[BY Friday]
+                  B -->|Duration/Continuity| D[UNTIL Friday]
+                  C --> E[Done BEFORE]
+                  D --> F[Doing DURING]
+                  style C fill:#ff00aa,color:#fff
+                  style D fill:#00f2ff,color:#000
+                `,
+                realLife: {
+                    title: "The Report vs. The Vacation",
+                    text: "Boss: 'Send the report <b>BY</b> 5 PM.' (One action, deadline).<br>Employee: 'I will be on vacation <b>UNTIL</b> Monday.' (Continuous state).",
+                    bad: "I will work by 5 PM.",
+                    good: "I will work until 5 PM."
+                },
+                brazilEquiv: "Até (Prazo) vs. Até (Duração)",
+                brazilTip: "In PT, 'Até' is used for both. In English: 'By' = Deadline (Prazo final). 'Until' = Duration (Duração da ação).",
+                scenarios: [
+                    {
+                        company: "Tesla",
+                        role: "Engineer",
+                        name: "Elon",
+                        text: "We need the prototype by Monday.",
+                        context: "Deadline. Have it ready before Monday ends."
+                    },
+                    {
+                        company: "Remote Work",
+                        role: "Dev",
+                        name: "Ana",
+                        text: "I will be in the meeting until 4 PM.",
+                        context: "Duration. I am staying from now up to 4 PM."
+                    }
+                ],
+                exercise: {
+                    prompt: "The store is open ___ 9 PM.",
+                    keywords: ["until"],
+                    successMsg: "Yes! The store stays open continuously 'until' 9 PM.",
+                    failMsg: "Is it a deadline or a duration? Open is a state, so use 'until'."
+                },
+                finalRevision: [
+                    { term: "May I", desc: "Permission (Polite)" },
+                    { term: "Can I", desc: "Ability (Physical)" },
+                    { term: "In Time", desc: "Safety Margin (Before disaster)" },
+                    { term: "On Time", desc: "Punctual (Scheduled)" },
+                    { term: "By [Time]", desc: "Deadline (The Guillotine)" },
+                    { term: "Until [Time]", desc: "Duration (The Marathon)" }
+                ]
             }
         };
 
@@ -495,21 +568,22 @@
             // Clear container
             container.innerHTML = '';
 
-            // Generate Real Life Box HTML (If exists)
+            // Generate Real Life Box
             let realLifeHTML = '';
-            if (data.realLifeBox) {
+            if (data.realLife) {
                 realLifeHTML = `
                     <div class="real-life-box">
-                        <div class="rl-title">${data.realLifeBox.title}</div>
-                        <div class="rl-text">${data.realLifeBox.text}</div>
+                        <div class="rl-title">⚡ ${data.realLife.title}</div>
+                        <div class="rl-text">${data.realLife.text}</div>
                         <div class="rl-examples">
-                            ${data.realLifeBox.examples.map(ex => `
-                                <div class="rl-card">
-                                    <div class="rl-ctx">${ex.context}</div>
-                                    <div class="rl-ph">${ex.phrase}</div>
-                                    <div class="rl-pt">${ex.pt}</div>
-                                </div>
-                            `).join('')}
+                            <div class="rl-ex-item">
+                                <span class="rl-label">❌ Don't Say</span>
+                                <span class="rl-val rl-bad">${data.realLife.bad}</span>
+                            </div>
+                            <div class="rl-ex-item">
+                                <span class="rl-label">✅ Say This</span>
+                                <span class="rl-val rl-good">${data.realLife.good}</span>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -565,6 +639,25 @@
                 </div>
             `).join('');
 
+            // Generate Revision HTML (Only for last tab)
+            let revisionHTML = '';
+            if (data.finalRevision) {
+                revisionHTML = `
+                    <div class="revision-section">
+                        <h3 class="revision-title">Quick Revision & Mastery</h3>
+                        <div class="revision-grid">
+                            ${data.finalRevision.map(item => `
+                                <div class="revision-card">
+                                    <span class="rev-term">${item.term}</span>
+                                    <span class="rev-desc">${item.desc}</span>
+                                    <span class="rev-task">Create a sentence with this!</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
             // Full HTML Injection
             container.innerHTML = `
                 <div class="intro-section">
@@ -596,6 +689,8 @@
                     <button class="check-btn" onclick="checkAnswer()">Check Answer</button>
                     <div id="feedback-msg" class="feedback"></div>
                 </div>
+
+                ${revisionHTML}
             `;
 
             // Re-run Mermaid to render the new diagram
